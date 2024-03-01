@@ -19,9 +19,40 @@ export default function RootLayout({
     <Box as="html" lang="en">
       <Box as="body" className={inter.className}>
         <Providers>
-          <Container minH="100vh" maxW="container.xl">
+          <Box
+            bgGradient="linear(to-br, #667eea, #764ba2)"
+            w="100vw"
+            h="100vh"
+            position="relative"
+            overflow="hidden"
+          >
+            <Box
+              position="absolute"
+              w="200%"
+              h="200%"
+              bg="whiteAlpha.200"
+              style={{
+                borderRadius: '50%',
+              }}
+              top="-50%"
+              left="50%"
+              transform="translate(-50%, -50%)"
+            />
+            <Box
+              position="absolute"
+              w="300%"
+              h="300%"
+              bg="whiteAlpha.100"
+              style={{
+                borderRadius: '50%',
+              }}
+              top="50%"
+              left="-50%"
+              transform="translate(-50%, -50%)"
+            />
+
             {children}
-          </Container>
+          </Box>
         </Providers>
       </Box>
     </Box>
