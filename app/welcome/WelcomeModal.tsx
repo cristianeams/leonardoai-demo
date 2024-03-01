@@ -13,7 +13,10 @@ import {
   ModalOverlay,
   FormControl,
   FormLabel,
-  FormErrorMessage,
+  Slide,
+  SlideFade,
+  VStack,
+  Center,
 } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 
@@ -36,67 +39,87 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({
   handleSave,
   onClose,
 }) => {
-  return (
-    <Modal
-      isOpen={isOpen}
-      size="xl"
-      onClose={onClose}
-      motionPreset="slideInBottom"
-      isCentered
-    >
-      <ModalOverlay />
-      <ModalContent mx="4">
-        <ModalHeader fontSize="4xl">Welcome</ModalHeader>
-        <ModalBody>
-          {currentSlide === 1 && (
-            <Text>Unleash your Creativity with the power of Leonardo Ai</Text>
-          )}
-          {currentSlide === 2 && (
-            <FormControl isRequired>
-              <FormLabel>Your Username</FormLabel>
-              <Input
-                placeholder="Username"
-                size="lg"
-                onChange={handleUserNameChange}
-              />
-            </FormControl>
-          )}
+  interface SlideInfo {
+    text?: string;
+    button: string;
+    action: () => void;
+    input?: JSX.Element;
+  }
 
-          {currentSlide === 3 && (
-            <FormControl>
-              <FormLabel>Your Job Title</FormLabel>
-              <Input
-                placeholder="Job Title"
-                size="lg"
-                onChange={handleJobTitleChange}
-              />
-            </FormControl>
-          )}
-        </ModalBody>
-        <ModalFooter>
-          <Box p={4} textAlign="right">
-            {currentSlide === 1 && (
-              <Button
-                colorScheme="blue"
-                onClick={handleNextSlide}
-                rightIcon={<ArrowForwardIcon />}
-              >
-                Get Started
-              </Button>
-            )}
-            {currentSlide === 2 && (
-              <Button colorScheme="blue" onClick={handleNextSlide}>
-                Next
-              </Button>
-            )}
+  const slideData: Record<number, SlideInfo> = {
+    1: {
+      text: 'Unleash your Creativity with the power of Leonardo Ai',
+      button: 'Get Started',
+      action: handleNextSlide,
+    },
+    2: {
+      button: 'Next',
+      action: handleNextSlide,
+      input: (
+        <FormControl isRequired key="username">
+          <FormLabel mb="2">Your Username</FormLabel>
+          <Input
+            bg="white"
+            placeholder="Username"
+            size="lg"
+            onChange={handleUserNameChange}
+          />
+        </FormControl>
+      ),
+    },
+    3: {
+      button: 'Save',
+      action: handleSave,
+      input: (
+        <FormControl key="jobTitle" isRequired>
+          <FormLabel>Your Job Title</FormLabel>
+          <Input
+            placeholder="Job Title"
+            size="lg"
+            onChange={handleJobTitleChange}
+          />
+        </FormControl>
+      ),
+    },
+  };
 
-            {currentSlide === 3 && (
-              <Button colorScheme="blue" onClick={handleSave}>
-                Save
-              </Button>
-            )}
-          </Box>
+  const renderContent = () => {
+    const { text, button, action, input } =
+      slideData[currentSlide as keyof typeof slideData];
+    return (
+      <ModalBody>
+        <Text fontSize="md" color="gray.600">
+          {text}
+        </Text>
+
+        {input}
+
+        <ModalFooter p="0" mt="8">
+          <Button colorScheme="red" onClick={action} w="full">
+            {button}
+          </Button>
         </ModalFooter>
+      </ModalBody>
+    );
+  };
+
+  return (
+    <Modal isOpen={isOpen} size="xl" onClose={onClose} isCentered>
+      <ModalOverlay />
+      <ModalContent
+        mx="4"
+        bg="white"
+        borderRadius="lg"
+        p={8}
+        boxShadow="lg"
+        minHeight="350px"
+      >
+        <Box>
+          <ModalHeader fontSize="4xl" textAlign="center">
+            Welcome
+          </ModalHeader>
+          {renderContent()}
+        </Box>
       </ModalContent>
     </Modal>
   );
