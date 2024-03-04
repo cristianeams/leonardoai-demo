@@ -24,16 +24,14 @@ export default function RootLayout({
             w="100vw"
             h="100vh"
             position="relative"
-            overflow="hidden"
+            overflow={{ base: 'auto', '2xl': 'hidden' }}
           >
             <Box
               position="absolute"
               w="200%"
               h="200%"
               bg="whiteAlpha.200"
-              style={{
-                borderRadius: '50%',
-              }}
+              borderRadius="50%"
               top="-50%"
               left="50%"
               transform="translate(-50%, -50%)"
@@ -43,9 +41,7 @@ export default function RootLayout({
               w="300%"
               h="300%"
               bg="whiteAlpha.100"
-              style={{
-                borderRadius: '50%',
-              }}
+              borderRadius="50%"
               top="50%"
               left="-50%"
               transform="translate(-50%, -50%)"
