@@ -20,7 +20,8 @@ export default function Header() {
       py={3}
       bg="whiteAlpha.900"
       align="center"
-      position="absolute"
+      position="sticky"
+      top="0"
       zIndex="banner"
     >
       <Heading as="h3" size="lg" color="purple.600" letterSpacing="tight">
