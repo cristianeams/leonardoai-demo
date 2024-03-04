@@ -11,3 +11,12 @@ export const getUserInfo = (): { userName: string; jobTitle: string } => {
   const jobTitle = localStorage.getItem('jobTitle') || '';
   return { userName, jobTitle };
 };
+
+/**
+ * A utility function designed to sign the user out by clearing user information
+ * from the client's local storage.
+ */
+export const signOutUser = (): void => {
+  localStorage.removeItem('userName');
+  localStorage.removeItem('jobTitle');
+};
