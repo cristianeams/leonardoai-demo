@@ -20,15 +20,15 @@ export const ALL_CONFERENCES = gql`
       websiteUrl
       organizers {
         name
-        image {
-          url
-        }
       }
       speakers {
         name
         about
-        location {
-          city
+        image {
+          url
+        }
+        social {
+          github
         }
       }
     }
@@ -40,7 +40,7 @@ export const fetchConferences = async () => {
     const response = await apolloClient.query({
       query: ALL_CONFERENCES,
     });
-
+    console.log(response);
     const data = response.data;
     console.log(data);
     return {
