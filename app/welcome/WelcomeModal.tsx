@@ -13,12 +13,7 @@ import {
   ModalOverlay,
   FormControl,
   FormLabel,
-  Slide,
-  SlideFade,
-  VStack,
-  Center,
 } from '@chakra-ui/react';
-import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 interface WelcomeModalProps {
   isOpen: boolean;

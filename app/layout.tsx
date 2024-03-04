@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Providers } from './providers';
-import { Box, Container } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 const inter = Inter({ subsets: ['latin'] });
 

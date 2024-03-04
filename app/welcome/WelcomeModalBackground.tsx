@@ -1,12 +1,5 @@
 'use client';
-import {
-  Box,
-  Button,
-  Circle,
-  Flex,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Button, Flex, Text, useDisclosure } from '@chakra-ui/react';
 import WelcomeModal from './WelcomeModal';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -58,7 +51,13 @@ export default function WelcomeModalBackground() {
         p={4}
         gap="6"
       >
-        <Text w="full" textAlign="center" color="white">
+        <Text
+          w="full"
+          textAlign="center"
+          color="white"
+          fontSize="xl"
+          fontWeight="semibold"
+        >
           Explore the new features and insights.
         </Text>
         {!isOpen && (

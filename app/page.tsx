@@ -18,9 +18,5 @@ export default function Home() {
     };
     checkUserInformation();
   }, [router]);
-  return (
-    <main>
-      <div>Hello world</div>
-    </main>
-  );
+  return <></>;
 }
