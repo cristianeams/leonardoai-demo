@@ -18,7 +18,7 @@ export default async function InformationPage() {
     <>
       <Header />
       <Box px="4">
-        <Heading as="h1" size="xl" pt={32} pb="6" color="white">
+        <Heading as="h1" size="xl" py="6" color="white">
           React Finland Conferences
         </Heading>
         <SimpleGrid

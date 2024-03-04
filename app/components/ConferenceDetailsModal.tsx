@@ -5,7 +5,7 @@ import {
   Box,
   Button,
   Divider,
-  Flex,
+  Link,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -15,7 +15,7 @@ import {
   ModalOverlay,
   Text,
 } from '@chakra-ui/react';
-import OrganizersList from './OrganizersList';
+import Speakers from './Speakers';
 
 interface ConferenceDetailsModalProps {
   conference: Conference;
@@ -28,15 +28,30 @@ const ConferenceDetailsModal: React.FC<ConferenceDetailsModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const { name, slogan, startDate, endDate, organizers, series } = conference;
+  const {
+    name,
+    slogan,
+    websiteUrl,
+    startDate,
+    endDate,
+    speakers,
+    organizers,
+    series,
+  } = conference;
+  const organizersList = organizers
+    .map((organizer) => organizer.name)
+    .join(', ');
+  organizersList;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered size="full">
+    <Modal isOpen={isOpen} onClose={onClose} size="full">
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
           <Text fontSize="2xl" color="purple.600">
-            {name}
+            <Link href={websiteUrl} isExternal>
+              {name}
+            </Link>
           </Text>
         </ModalHeader>
 
@@ -57,9 +72,13 @@ const ConferenceDetailsModal: React.FC<ConferenceDetailsModalProps> = ({
               {formattedDate(startDate)} - {formattedDate(endDate)}
             </Box>
           </Box>
+          {organizersList && (
+            <Text fontSize="xs">Organizers: {organizersList}</Text>
+          )}
+          <Text py="4">Topic: {slogan}</Text>
           <Divider my="4" />
-          <Text pb="4">{slogan}</Text>
-          <OrganizersList organizers={organizers} />
+
+          <Speakers speakers={speakers} />
         </ModalBody>
 
         <ModalFooter>
