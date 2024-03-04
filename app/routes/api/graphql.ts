@@ -1,4 +1,5 @@
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { Conference } from '@/src/generated/graphql';
+import { ApolloClient, ApolloError, InMemoryCache, gql } from '@apollo/client';
 
 export const apolloClient = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_GRAPHQL_API,
@@ -9,8 +10,27 @@ export const ALL_CONFERENCES = gql`
   {
     conferences {
       id
-      year
       name
+      startDate
+      endDate
+      slogan
+      series {
+        name
+      }
+      websiteUrl
+      organizers {
+        name
+        image {
+          url
+        }
+      }
+      speakers {
+        name
+        about
+        location {
+          city
+        }
+      }
     }
   }
 `;
@@ -22,21 +42,23 @@ export const fetchConferences = async () => {
     });
 
     const data = response.data;
-    console.log('GraphQL Data:', data);
-
+    console.log(data);
     return {
       data,
       loading: false,
-      error: null,
+      error: null as ApolloError | null, // Assert type as ApolloError | null
     };
-    console.log(data);
   } catch (error) {
-    console.error('GraphQL Error:', error);
+    // Create a new Error object with the actual error message
+    const errorMessage =
+      error instanceof ApolloError
+        ? error.message
+        : 'An unknown error has ocurred.';
 
     return {
       data: null,
       loading: false,
-      error,
+      error: new Error(errorMessage),
     };
   }
 };

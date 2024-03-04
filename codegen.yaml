@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://countries.trevorblades.com'
+schema: 'https://api.react-finland.fi/graphql'
 generates:
   src/generated/graphql.ts:
     plugins:
