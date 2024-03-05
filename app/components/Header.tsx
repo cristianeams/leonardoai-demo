@@ -1,7 +1,14 @@
 'use client';
 import NextLink from 'next/link';
 import { signOutUser } from '@/utils/userUtils';
-import { Flex, Heading, IconButton, Link, Spacer } from '@chakra-ui/react';
+import {
+  Flex,
+  Heading,
+  IconButton,
+  Link,
+  Spacer,
+  Tooltip,
+} from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { FaArrowRightFromBracket, FaUser } from 'react-icons/fa6';
 
@@ -33,25 +40,29 @@ export default function Header() {
       </Link>
 
       <Spacer />
-      <Link as={NextLink} href="/userSettings" replace>
+      <Tooltip label="User Settings" aria-label="Edit User Settings">
+        <Link as={NextLink} href="/userSettings" replace>
+          <IconButton
+            icon={<FaUser />}
+            variant="solid"
+            aria-label="User Settings"
+            isRound
+            colorScheme="purple"
+            ml={2}
+          />
+        </Link>
+      </Tooltip>
+      <Tooltip label="Sign Out" aria-label="Sign Out">
         <IconButton
-          icon={<FaUser />}
-          variant="ghost"
-          aria-label="User Account"
+          icon={<FaArrowRightFromBracket />}
+          variant="solid"
+          aria-label="Sign Out"
           isRound
-          color="purple.600"
+          colorScheme="purple"
           ml={2}
+          onClick={handleSignOut}
         />
-      </Link>
-      <IconButton
-        icon={<FaArrowRightFromBracket />}
-        variant="ghost"
-        aria-label="Sign Out"
-        isRound
-        color="purple.600"
-        ml={2}
-        onClick={handleSignOut}
-      />
+      </Tooltip>
     </Flex>
   );
 }
