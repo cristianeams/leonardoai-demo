@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server:
 
-````bash
+```bash
 npm run dev
 # or
 yarn dev
@@ -17,7 +17,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx``. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/page.tsx`.
 
 This project uses next/font to automatically optimize and load Inter, a custom Google Font.
 
@@ -37,26 +37,36 @@ bun codegen
 
 The project features a welcome modal designed to guide users through setting up their profile with two slides.
 
-1. **Username Slide:** On the first modal slide, users can set their desired username.
+## Username Slide
 
-2. **Job Title Slide:** On the second modal slide, users can input their job title.
+1. **Description:**
+   On the first modal slide, users can set their desired username.
 
-Information Page
-Access the Information Page once you have set your user information.
-The Information Page displays data from a public GraphQL API (https://api.react-finland.fi/graphql).
-Clicking on an item opens a modal displaying detailed information about that item.
+2. **User Input:**
+   Users are prompted to input their desired username.
+
+## Job Title Slide
+
+1. **Description:**
+   On the second modal slide, users can input their job title.
+
+2. **User Input:**
+   Users are prompted to input their job title.
 
 # Information Page
 
 Access the Information Page once you have set your user information.
 
-The Information Page fetches and displays data from a public GraphQL API available at [https://api.react-finland.fi/graphql](https://api.react-finland.fi/graphql) reprensenting the list of React conferences in Finland
+The Information Page fetches and displays data from a public GraphQL API available at [api.react-finland.fi/graphql](https://api.react-finland.fi/graphql) representing the list of React conferences in Finland.
 
-Explore  content presented on the Information Page, which is designed to be mobile and tablet compatible.
+Explore content presented on the Information Page, which is designed to be mobile and tablet compatible.
 
-### Features:
+## Features
 
-1. **GraphQL API Data:** The page showcases data retrieved from the GraphQL API, providing valuable information.
+1. **GraphQL API Data:**
+   The page showcases data retrieved from the GraphQL API, providing valuable information.
 
-2. **Interactive Items:** Clicking on an item within the Information Page opens a modal, presenting detailed information about that specific item.
-````
+2. **Interactive Items:**
+   Clicking on an item within the Information Page opens a modal, presenting detailed information about that specific item.
+   
+```
