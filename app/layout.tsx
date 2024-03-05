@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Leonardo AI',
   description: 'A coding task for a frontend developer position',
+  icons: {
+    icon: ['/icon.ico'],
+  },
 };
 
 export default function RootLayout({
