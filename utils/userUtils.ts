@@ -7,9 +7,15 @@
  */
 
 export const getUserInfo = (): { userName: string; jobTitle: string } => {
-  const userName = localStorage.getItem('userName') || '';
-  const jobTitle = localStorage.getItem('jobTitle') || '';
-  return { userName, jobTitle };
+  // Check if localStorage is available
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const userName = localStorage.getItem('userName') || '';
+    const jobTitle = localStorage.getItem('jobTitle') || '';
+    return { userName, jobTitle };
+  }
+
+  // If localStorage is not available, return default values or handle it as needed
+  return { userName: '', jobTitle: '' };
 };
 
 /**
@@ -19,4 +25,22 @@ export const getUserInfo = (): { userName: string; jobTitle: string } => {
 export const signOutUser = (): void => {
   localStorage.removeItem('userName');
   localStorage.removeItem('jobTitle');
+};
+
+/**
+ * A utility function designed to update user information in the client's local storage.
+ * @param userInfo An object containing user information (userName and jobTitle).
+ */
+export const setUserInfo = (userInfo: {
+  userName: string;
+  jobTitle: string;
+}): void => {
+  // Check if localStorage is available
+  if (typeof window !== 'undefined' && window.localStorage) {
+    localStorage.setItem('userName', userInfo.userName);
+    localStorage.setItem('jobTitle', userInfo.jobTitle);
+  } else {
+    // Handle the case where localStorage is not available
+    console.warn('localStorage is not available. User information not stored.');
+  }
 };

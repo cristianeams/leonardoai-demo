@@ -40,9 +40,8 @@ export const fetchConferences = async () => {
     const response = await apolloClient.query({
       query: ALL_CONFERENCES,
     });
-    console.log(response);
+
     const data = response.data;
-    console.log(data);
     return {
       data,
       loading: false,
