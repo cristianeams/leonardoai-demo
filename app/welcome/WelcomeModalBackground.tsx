@@ -1,5 +1,5 @@
 'use client';
-import { Button, Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, useDisclosure } from '@chakra-ui/react';
 import WelcomeModal from './WelcomeModal';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -40,28 +40,28 @@ export default function WelcomeModalBackground() {
   };
 
   return (
-    <div>
+    <Box>
       <Flex
         direction="column"
         align="center"
         position="absolute"
-        bottom="30%"
-        left="0"
+        bottom="15%"
         width="100%"
         p={4}
         gap="6"
+        minH="134px"
       >
         <Text
-          w="full"
           textAlign="center"
           color="white"
           fontSize="xl"
           fontWeight="semibold"
+          mb="2"
         >
           Explore the new features and insights.
         </Text>
         {!isOpen && (
-          <Button colorScheme="red" onClick={onOpen} mt="2">
+          <Button colorScheme="red" onClick={onOpen}>
             Explore Now
           </Button>
         )}
@@ -76,6 +76,6 @@ export default function WelcomeModalBackground() {
         handleSave={handleSave}
         onClose={onClose}
       />
-    </div>
+    </Box>
   );
 }

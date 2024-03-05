@@ -82,7 +82,7 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({
     const { text, button, action, input } =
       slideData[currentSlide as keyof typeof slideData];
     return (
-      <ModalBody>
+      <ModalBody textAlign="center">
         <Text fontSize="md" color="gray.600">
           {text}
         </Text>
