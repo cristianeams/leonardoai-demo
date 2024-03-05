@@ -1,6 +1,7 @@
 'use client';
+import NextLink from 'next/link';
 import { signOutUser } from '@/utils/userUtils';
-import { Flex, Heading, IconButton, Spacer } from '@chakra-ui/react';
+import { Flex, Heading, IconButton, Link, Spacer } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { FaArrowRightFromBracket, FaUser } from 'react-icons/fa6';
 
@@ -11,6 +12,7 @@ export default function Header() {
     signOutUser();
     router.push('/welcome');
   };
+
   return (
     <Flex
       as="nav"
@@ -20,22 +22,27 @@ export default function Header() {
       py={3}
       bg="whiteAlpha.900"
       align="center"
-      position="sticky"
+      position="fixed"
       top="0"
       zIndex="banner"
     >
-      <Heading as="h3" size="lg" color="purple.600" letterSpacing="tight">
-        Dashboard
-      </Heading>
+      <Link as={NextLink} href="/information" replace>
+        <Heading as="h3" size="lg" color="purple.600" letterSpacing="tight">
+          Dashboard
+        </Heading>
+      </Link>
+
       <Spacer />
-      <IconButton
-        icon={<FaUser />}
-        variant="ghost"
-        aria-label="User Account"
-        isRound
-        color="purple.600"
-        ml={2}
-      />
+      <Link as={NextLink} href="/userSettings" replace>
+        <IconButton
+          icon={<FaUser />}
+          variant="ghost"
+          aria-label="User Account"
+          isRound
+          color="purple.600"
+          ml={2}
+        />
+      </Link>
       <IconButton
         icon={<FaArrowRightFromBracket />}
         variant="ghost"
