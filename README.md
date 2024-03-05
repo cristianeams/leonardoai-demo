@@ -20,6 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`.
 
 This project uses next/font to automatically optimize and load Inter, a custom Google Font.
+```
 
 ## GraphQL and Code Generation
 This project utilizes GraphQL for data fetching. Run the following command to generate types based on your GraphQL schema:
@@ -32,6 +33,7 @@ yarn codegen
 pnpm codegen
 # or
 bun codegen
+```
 
 # Welcome Modal and User Information
 
@@ -69,4 +71,4 @@ Explore content presented on the Information Page, which is designed to be mobil
 2. **Interactive Items:**
    Clicking on an item within the Information Page opens a modal, presenting detailed information about that specific item.
    
-```
+
