@@ -1,8 +1,7 @@
 import { ApolloClient, ApolloError, InMemoryCache, gql } from '@apollo/client';
 
-const API_URL = 'https://api.react-finland.fi/graphql';
 export const apolloClient = new ApolloClient({
-  uri: API_URL,
+  uri: process.env.NEXT_PUBLIC_GRAPHQL_API,
   cache: new InMemoryCache(),
 });
 
