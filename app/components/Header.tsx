@@ -1,6 +1,7 @@
 'use client';
 import NextLink from 'next/link';
-import { signOutUser } from '@/utils/userUtils';
+import { useRouter } from 'next/navigation';
+import { FaArrowRightFromBracket, FaUser } from 'react-icons/fa6';
 import {
   Flex,
   Heading,
@@ -9,10 +10,9 @@ import {
   Spacer,
   Tooltip,
 } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
-import { FaArrowRightFromBracket, FaUser } from 'react-icons/fa6';
+import { signOutUser } from '@/utils/userUtils';
 
-export default function Header() {
+export const Header: React.FC = () => {
   const router = useRouter();
   const handleSignOut = () => {
     // Call the signOutUser function to clear user information from local storage
@@ -65,4 +65,4 @@ export default function Header() {
       </Tooltip>
     </Flex>
   );
-}
+};

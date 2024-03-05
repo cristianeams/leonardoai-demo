@@ -1,20 +1,29 @@
+interface UserInfo {
+  userName: string;
+  jobTitle: string;
+}
+
+/**
+ * Checks if local storage is available in the current browser.
+ * @returns A boolean indicating whether local storage is supported.
+ */
+const isLocalStorageAvailable = (): boolean => {
+  // Check if the 'window' object is defined and if 'localStorage' is available
+  // The '!!' (double negation) ensures that the result is a boolean
+  return typeof window !== 'undefined' && !!window.localStorage;
+};
+
 /**
  * A utility function designed to retrieve user information,
  * specifically the username and job title, from the client's local storage.
- * @param userName string representing the user's username.
- * @param jobTitle string representing the user's jobTitle
- * @returns an object containing user information:
+ * @returns an object containing user information.
  */
-
-export const getUserInfo = (): { userName: string; jobTitle: string } => {
-  // Check if localStorage is available
-  if (typeof window !== 'undefined' && window.localStorage) {
+export const getUserInfo = (): UserInfo => {
+  if (isLocalStorageAvailable()) {
     const userName = localStorage.getItem('userName') || '';
     const jobTitle = localStorage.getItem('jobTitle') || '';
     return { userName, jobTitle };
   }
-
-  // If localStorage is not available, return default values or handle it as needed
   return { userName: '', jobTitle: '' };
 };
 
@@ -31,12 +40,9 @@ export const signOutUser = (): void => {
  * A utility function designed to update user information in the client's local storage.
  * @param userInfo An object containing user information (userName and jobTitle).
  */
-export const setUserInfo = (userInfo: {
-  userName: string;
-  jobTitle: string;
-}): void => {
+export const setUserInfo = (userInfo: UserInfo): void => {
   // Check if localStorage is available
-  if (typeof window !== 'undefined' && window.localStorage) {
+  if (isLocalStorageAvailable()) {
     localStorage.setItem('userName', userInfo.userName);
     localStorage.setItem('jobTitle', userInfo.jobTitle);
   } else {

@@ -34,6 +34,8 @@ export const ALL_CONFERENCES = gql`
   }
 `;
 
+type ApolloErrorOrUndefined = ApolloError | undefined;
+
 export const fetchConferences = async () => {
   try {
     const response = await apolloClient.query({
@@ -44,19 +46,17 @@ export const fetchConferences = async () => {
     return {
       data,
       loading: false,
-      error: null as ApolloError | null, // Assert type as ApolloError | null
+      error: undefined as ApolloErrorOrUndefined,
     };
   } catch (error) {
-    // Create a new Error object with the actual error message
-    const errorMessage =
-      error instanceof ApolloError
-        ? error.message
-        : 'An unknown error has ocurred.';
+    // Use the actual error object if it's an ApolloError
+    const actualError: ApolloErrorOrUndefined =
+      error instanceof ApolloError ? error : undefined;
 
     return {
       data: null,
       loading: false,
-      error: new Error(errorMessage),
+      error: actualError,
     };
   }
 };

@@ -1,4 +1,5 @@
 'use client'; // Error components must be Client Components
+import React, { useEffect } from 'react';
 import {
   AbsoluteCenter,
   Alert,
@@ -6,13 +7,8 @@ import {
   AlertIcon,
   AlertTitle,
 } from '@chakra-ui/react';
-import { useEffect } from 'react';
 
-export default function Error({
-  error,
-}: {
-  error: Error & { digest?: string };
-}) {
+const Error = ({ error }: { error: Error & { digest?: string } }) => {
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
@@ -37,4 +33,6 @@ export default function Error({
       </Alert>
     </AbsoluteCenter>
   );
-}
+};
+
+export default Error;

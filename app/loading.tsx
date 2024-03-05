@@ -1,6 +1,7 @@
+import React from 'react';
 import { Flex, Spinner } from '@chakra-ui/react';
 
-export default function Loading() {
+const Loading: React.FC = () => {
   return (
     <Flex
       height="100vh"
@@ -13,4 +14,6 @@ export default function Loading() {
       <Spinner size="xl" color="whiteAlpha.900" />
     </Flex>
   );
-}
+};
+
+export default Loading;

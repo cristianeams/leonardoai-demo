@@ -14,7 +14,7 @@ import { FaGithub } from 'react-icons/fa';
 
 type SpeakersProps = Pick<Conference, 'speakers'>;
 
-const Speakers: React.FC<SpeakersProps> = ({ speakers }) => {
+export const Speakers: React.FC<SpeakersProps> = ({ speakers }) => {
   return (
     <List display="flex" flexDirection="column">
       {speakers?.map((speaker) => (
@@ -45,4 +45,3 @@ const Speakers: React.FC<SpeakersProps> = ({ speakers }) => {
     </List>
   );
 };
-export default Speakers;

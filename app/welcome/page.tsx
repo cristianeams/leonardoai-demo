@@ -1,5 +1,5 @@
-import WelcomeModalBackground from './WelcomeModalBackground';
+import { WelcomeModalBackground } from './WelcomeModalBackground';
 
-export default function WelcomeModalPage() {
+export default function WelcomePage() {
   return <WelcomeModalBackground />;
 }

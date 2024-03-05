@@ -11,13 +11,15 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { Conference } from '@/src/generated/graphql';
-import ConferenceDetailsModal from './ConferenceDetailsModal';
+import { ConferenceDetailsModal } from './ConferenceDetailsModal';
 
 interface ConferenceCardProps {
   conference: Conference;
 }
 
-const ConferenceCard: React.FC<ConferenceCardProps> = ({ conference }) => {
+export const ConferenceCard: React.FC<ConferenceCardProps> = ({
+  conference,
+}) => {
   const { name, slogan, series } = conference;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -66,5 +68,3 @@ const ConferenceCard: React.FC<ConferenceCardProps> = ({ conference }) => {
     </>
   );
 };
-
-export default ConferenceCard;

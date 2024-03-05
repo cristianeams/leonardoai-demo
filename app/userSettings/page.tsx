@@ -1,22 +1,24 @@
 'use client';
-import { Box, Heading } from '@chakra-ui/react';
-import Header from '../components/Header';
-import EditableUserSettings from '../components/EditableUserSettings';
-import { useRouter } from 'next/navigation';
-import { getUserInfo } from '@/utils/userUtils';
-import Loading from '../loading';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Box, Heading } from '@chakra-ui/react';
+import { getUserInfo } from '@/utils/userUtils';
+import { Header } from '../components';
+import { EditableUserSettings } from '../components/EditableUserSettings';
+import Loading from '../loading';
 
 export default function SettingsPage() {
   const router = useRouter();
   const { userName } = getUserInfo();
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (!userName) {
       setLoading(false);
       router.push('/welcome');
+    } else {
+      setLoading(false);
     }
-    setLoading(false);
   }, [userName, router]);
 
   return (

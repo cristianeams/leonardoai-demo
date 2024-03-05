@@ -15,7 +15,7 @@ import {
   ModalOverlay,
   Text,
 } from '@chakra-ui/react';
-import Speakers from './Speakers';
+import { Speakers } from './Speakers';
 
 interface ConferenceDetailsModalProps {
   conference: Conference;
@@ -23,7 +23,7 @@ interface ConferenceDetailsModalProps {
   onClose: () => void;
 }
 
-const ConferenceDetailsModal: React.FC<ConferenceDetailsModalProps> = ({
+export const ConferenceDetailsModal: React.FC<ConferenceDetailsModalProps> = ({
   conference,
   isOpen,
   onClose,
@@ -90,4 +90,3 @@ const ConferenceDetailsModal: React.FC<ConferenceDetailsModalProps> = ({
     </Modal>
   );
 };
-export default ConferenceDetailsModal;

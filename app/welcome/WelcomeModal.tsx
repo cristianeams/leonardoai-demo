@@ -25,7 +25,13 @@ interface WelcomeModalProps {
   onClose: () => void;
 }
 
-const WelcomeModal: React.FC<WelcomeModalProps> = ({
+enum Slide {
+  Start = 1,
+  Username = 2,
+  JobTitle = 3,
+}
+
+export const WelcomeModal: React.FC<WelcomeModalProps> = ({
   isOpen,
   currentSlide,
   handleUserNameChange,
@@ -41,17 +47,17 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({
     input?: JSX.Element;
   }
 
-  const slideData: Record<number, SlideInfo> = {
-    1: {
+  const slideData: Record<Slide, SlideInfo> = {
+    [Slide.Start]: {
       text: 'Unleash your Creativity with the power of Leonardo Ai',
       button: 'Get Started',
       action: handleNextSlide,
     },
-    2: {
+    [Slide.Username]: {
       button: 'Next',
       action: handleNextSlide,
       input: (
-        <FormControl isRequired key="username">
+        <FormControl isRequired key="userName">
           <FormLabel mb="2">Your Username</FormLabel>
           <Input
             bg="white"
@@ -62,7 +68,7 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({
         </FormControl>
       ),
     },
-    3: {
+    [Slide.JobTitle]: {
       button: 'Save',
       action: handleSave,
       input: (
@@ -119,5 +125,3 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({
     </Modal>
   );
 };
-
-export default WelcomeModal;

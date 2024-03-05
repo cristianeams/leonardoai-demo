@@ -1,30 +1,30 @@
 'use client';
-import { Box, Button, Flex, Text, useDisclosure } from '@chakra-ui/react';
-import WelcomeModal from './WelcomeModal';
-import { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { Box, Button, Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { WelcomeModal } from './WelcomeModal';
 
-export default function WelcomeModalBackground() {
+export const WelcomeModalBackground: React.FC = () => {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true });
   const [userName, setUserName] = useState('');
   const [jobTitle, setJobTitle] = useState('');
   const [currentSlide, setCurrentSlide] = useState(1);
 
-  const handleUserNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUserNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newUsername = e.target.value;
     setUserName(newUsername);
   };
 
-  const handleJobTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleJobTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newJobTitle = e.target.value;
     setJobTitle(newJobTitle);
   };
 
   const handleNextSlide = () => {
-    if (currentSlide == 1) {
+    if (currentSlide === 1) {
       setCurrentSlide(currentSlide + 1);
-    } else if (currentSlide == 2 && userName) {
+    } else if (currentSlide === 2 && userName) {
       setCurrentSlide(currentSlide + 1);
     }
   };
@@ -78,4 +78,4 @@ export default function WelcomeModalBackground() {
       />
     </Box>
   );
-}
+};
